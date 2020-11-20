@@ -435,7 +435,7 @@
                     @else
                     <ul class="list-reset lg:flex justify-end flex-1 items-center">
                         <li class="mr-3">
-                            <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Active</a>
+                            <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{ route('login') }}">Login</a>
                         </li>
                     </ul>
                     @if (Route::has('dashboard'))
