@@ -99,12 +99,10 @@
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <img class="card-img-top" src="" alt="Card image cap">
+
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
+                    <img src="https://www.chambrekids.com/15277-large_default/lit-2-places-140x190-cm-sylea.jpg" alt="Card image cap">
                         <div class="w-full font-bold text-xl text-gray-800 px-6">
                             Lorem ipsum dolor sit amet.
                         </div>
@@ -122,12 +120,9 @@
                 </div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <img src="" alt="Card image cap">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
+                    <img src="https://www.chambrekids.com/15277-large_default/lit-2-places-140x190-cm-sylea.jpg" alt="Card image cap">
                         <div class="w-full font-bold text-xl text-gray-800 px-6">
                             Lorem ipsum dolor sit amet.
                         </div>
@@ -147,9 +142,7 @@
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
+                    <img src="https://www.chambrekids.com/15277-large_default/lit-2-places-140x190-cm-sylea.jpg" alt="Card image cap">
                         <div class="w-full font-bold text-xl text-gray-800 px-6">
                             Lorem ipsum dolor sit amet.
                         </div>
