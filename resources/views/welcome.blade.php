@@ -99,6 +99,7 @@
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <img class="card-img-top" src="" alt="Card image cap">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                         <p class="w-full text-gray-600 text-xs md:text-sm px-6">
@@ -121,6 +122,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <img src="" alt="Card image cap">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                         <p class="w-full text-gray-600 text-xs md:text-sm px-6">
