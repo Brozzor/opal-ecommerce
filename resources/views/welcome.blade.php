@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Opal Shoes</title>
+    <title>Opal Home</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
             <div class="pl-4 flex items-center">
                 <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="">
-                    OPAL SHOES
+                    OPAL HOME
                 </a>
             </div>
             <div class="block lg:hidden pr-4">
@@ -65,7 +65,7 @@
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
           <h1 class="my-4 text-5xl font-bold leading-tight">
-          Avec Opal, vos pieds seront au poil
+          Avec Opal, réinventer votre maison
           </h1>
           <p class="leading-normal text-2xl mb-8">
           Profitez de nos offres spéciales jusqu'à -75% pour un Noël opalescent
@@ -206,7 +206,7 @@
             <div class="w-full flex flex-col md:flex-row py-6">
                 <div class="flex-1 mb-6 text-black">
                     <a class="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                        OPAL SHOES
+                        OPAL HOME
                     </a>
                 </div>
                 <div class="flex-1">
