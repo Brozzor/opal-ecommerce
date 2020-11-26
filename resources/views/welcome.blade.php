@@ -73,7 +73,7 @@
         </div>
         <!--Right Col-->
         <div class="w-full md:w-3/5 py-6 text-center">
-          <img class="w-full md:w-4/5 z-50" src="{{ URL::asset('img/home_shoes.png')}}" />
+          <img class="w-full md:w-4/5 z-50" src="{{ URL::asset('img/home_bed.png')}}" />
         </div>
     </div>
     <div class="relative -mt-12 lg:-mt-24">
@@ -257,7 +257,6 @@
                 </div>
             </div>
         </div>
-        <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector created by freepik - www.freepik.com</a>
     </footer>
 
     <script>
