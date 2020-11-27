@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::All();
+        $articles = Article::paginate(6);
         return view('welcome', compact("articles"));
     }
     
