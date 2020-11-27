@@ -1,7 +1,5 @@
-resolutions problèmes php / installation 
+resolutions problèmes php 
 
-documentation laravel
+documentation CRUD laravel
 
-recherche templates 
-
-inspiration de sites e-commerce 
+remplicage base de donnée opal-home sur phpMyadmin (articles pour le site)
