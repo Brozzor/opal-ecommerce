@@ -69,7 +69,7 @@
                             </x-jet-dropdown-link>
 
                             @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                <x-jet-dropdown-link href="{{ route('teams.create') }}">
+                                <x-jet-dropdown-link href="{{ route('adminArticles') }}">
                                     {{ __('Articles') }}
                                 </x-jet-dropdown-link>
                             @endcan
