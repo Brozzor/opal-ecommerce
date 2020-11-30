@@ -8,7 +8,7 @@ class AdminArticlesController extends Controller
 {
     public function index()
     {
-        $articles = Article::paginate(20);
+        $articles = Article::orderBy('id', 'desc')->paginate(20);
         return view('admin/articles', compact("articles"));
     }
 }

@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(6);
+        $articles = Article::orderBy('id', 'desc')->paginate(6);
         return view('welcome', compact("articles"));
     }
     
