@@ -14,4 +14,8 @@ class Article extends Model
     protected $fillable = [
         'id', 'name', 'description', 'color','genre','brand','price','qty','imgLink'
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
 }

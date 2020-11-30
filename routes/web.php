@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\AdminArticlesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('/admin/articles', [AdminArticlesController::class, 'index'])->name('adminArticles');
+Route::get('/admin/articles', [AdminArticlesController::class, 'index'])->middleware('admin')->name('adminArticles');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

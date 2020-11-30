@@ -2,24 +2,20 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
+use Auth;
 use Illuminate\Http\Request;
 
 class IsAdmin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
+
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->rank == 2) {
+        if (Auth::user()->rank == 2) {
             return $next($request);
         }
 
-        return redirect('/');
+        return response('Admin Only', 401);
     }
 }
