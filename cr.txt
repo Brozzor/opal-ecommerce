@@ -1,5 +1,0 @@
-resolutions problèmes php 
-
-documentation CRUD laravel
-
-remplicage base de donnée opal-home sur phpMyadmin (articles pour le site)
