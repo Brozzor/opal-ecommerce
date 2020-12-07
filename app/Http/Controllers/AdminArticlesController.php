@@ -18,4 +18,10 @@ class AdminArticlesController extends Controller
         $article->delete();
         return redirect()->route('articles.index');
     }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('admin/articlesEdit', compact('article'));
+    }
 }
