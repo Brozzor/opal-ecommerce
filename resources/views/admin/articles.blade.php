@@ -6,6 +6,11 @@
     </x-slot>
 
     <div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <center>
+      <a type="button" href="/admin/article/add" class=" mb-1 px-4 py-2 bg-gray-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray transition ease-in-out duration-150">
+                Ajouter un article
+            </a></center>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 

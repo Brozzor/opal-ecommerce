@@ -26,6 +26,10 @@ class AdminArticlesController extends Controller
         return view('admin/articlesEdit', compact('article'));
     }
 
+    public function add()
+    {
+        return view('admin/articlesAdd');
+    }
 
     public function update(Request $request, $id)
     {
@@ -38,6 +42,24 @@ class AdminArticlesController extends Controller
         $article->price = $request->get('price');
         $article->updated_at = date('Y-m-d H:i:s');
         $article->imgLink = $request->get('imgLink');
+        $article->save();
+
+        return redirect()->route('articles.index');
+    }
+
+    public function store(Request $request)
+    {
+        $article = new Article();
+        $article->name = $request->get('name');
+        $article->description = $request->get('description');
+        $article->color = $request->get('color');
+        $article->genre = $request->get('genre');
+        $article->brand = $request->get('brand');
+        $article->price = $request->get('price');
+        $article->created_at = date('Y-m-d H:i:s');
+        $article->updated_at = date('Y-m-d H:i:s');
+        $article->imgLink = $request->get('imgLink');
+
         $article->save();
 
         return redirect()->route('articles.index');
