@@ -67,9 +67,14 @@
                           </td>
 
                           <td class="px-8 py-2">
-                            <button class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
+                            <form action="{{ route('articles.destroy') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" value="{{ $article->id }}">
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
                                supprimer
                             </button>
+                            </form>
                           </td>
                         </tr>
                         @endforeach
