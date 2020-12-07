@@ -26,6 +26,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/admin/articles', [AdminArticlesController::class, 'index'])->middleware('admin')->name('articles.index');
 Route::get('/admin/article/{id}/edit', [AdminArticlesController::class, 'edit'])->name('articles.edit');
 Route::delete('articles', [AdminArticlesController::class, 'destroy'])->name('articles.destroy');
+Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->name('articles.update');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

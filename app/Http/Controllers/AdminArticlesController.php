@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,22 @@ class AdminArticlesController extends Controller
     {
         $article = Article::find($id);
         return view('admin/articlesEdit', compact('article'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $article->name = $request->get('name');
+        $article->description = $request->get('description');
+        $article->color = $request->get('color');
+        $article->genre = $request->get('genre');
+        $article->brand = $request->get('brand');
+        $article->price = $request->get('price');
+        $article->updated_at = date('Y-m-d H:i:s');
+        $article->imgLink = $request->get('imgLink');
+        $article->save();
+
+        return redirect()->route('articles.index');
     }
 }
