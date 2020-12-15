@@ -100,17 +100,21 @@
                
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                        <p class="text-gray-800 text-base px-6 mb-5">
-                        {{ $article->description }}
-                        </p>
-                        <p class="text-gray-800 text-xl px-6 mb-5">
-                        {{ $article->price }} €
-                        </p> 
+                
+                <u class="text-gray-800 text-base px-6 mb-5">
+                    Marque : {{ $article->brand }}
+                </u>
+                <p class="text-gray-800 text-base px-6 mb-5">
+                    Description : <br>{{ $article->description }}
+                </p>
+                <p class="text-gray-800 text-xl px-6 mb-5">
+                    {{ $article->price }} €
+                </p> 
 
 
-                        <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Ajouter au panier
-                        </button>
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    Ajouter au panier
+                </button>
                
             </div>
 
