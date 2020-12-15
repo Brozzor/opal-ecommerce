@@ -3,6 +3,7 @@
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminArticlesController;
 use App\Http\Controllers\MagasinController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/', function () {
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/magasin', [MagasinController::class, 'index'])->name('magasin');
+Route::get('/article/{id}', [ArticleController::class, 'index'])->name('article.index');
 
 Route::get('/admin/articles', [AdminArticlesController::class, 'index'])->middleware('admin')->name('articles.index');
 Route::get('/admin/article/{id}/edit', [AdminArticlesController::class, 'edit'])->middleware('admin')->name('articles.edit');
