@@ -14,8 +14,8 @@ class MagasinController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('id', 'desc')->paginate(9
-    );
+        $articles = Article::orderBy('id', 'desc')->paginate(12, ['*'], 'page');
+        //$articles = Article::orderBy('id', 'desc')->paginate(9);
         return view('magasin', compact("articles"));
     }
     

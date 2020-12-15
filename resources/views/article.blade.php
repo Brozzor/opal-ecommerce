@@ -17,7 +17,6 @@
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
-    <!--Nav-->
     @if (Route::has('register'))
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -64,21 +63,9 @@
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
     @endif
-    <!--Hero-->
-    <div class="pt-24">
-      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-        <!--Left Col-->
-        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-          <h1 class="my-4 text-5xl font-bold leading-tight">
-          Avec Opal, réinventer votre maison
-          </h1>
-          <p class="leading-normal text-2xl mb-8">
-          Profitez de nos offres spéciales jusqu'à -75% pour un Noël opalescent
-          </p>
-        </div>
         <!--Right Col-->
         <div class="w-full md:w-3/5 py-6 text-center">
-          <img class="w-full md:w-4/5 z-50" src="{{ URL::asset('img/home_bed.png')}}" />
+
         </div>
     </div>
     <div class="relative -mt-12 lg:-mt-24">
@@ -98,34 +85,42 @@
     <section class="bg-white border-b py-8">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Dernières nouveautés
+                {{ $article->name }}
             </h1>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            @foreach($articles as $article)
+            
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <a href="{{ route('article.index', $article->id) }}" class="flex flex-wrap no-underline hover:no-underline">
-                    <img src="{{ $article->imgLink }}" alt="Card image cap">
-                        <div class="w-full font-bold text-xl text-gray-800 px-6 mt-4 mb-4">
-                            {{ $article->name }}
-                        </div>
-                        <p class="text-gray-800 text-base px-6 mb-5">
-                        {{ $article->description }}
-                        </p>
-                    </a>
+
+                    <img src="{{ $article->imgLink }}" style="height: 550px" alt="Card image cap">
+
                 </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="flex items-center justify-center">
-                        <a href="{{ route('article.index', $article->id) }}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Voir
-                        </a>
-                    </div>
-                </div>
+               
             </div>
-            @endforeach
-          
+            <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+                
+                <u class="text-gray-800 text-base px-6 mb-5">
+                    Marque : {{ $article->brand }}
+                </u>
+                <p class="text-gray-800 text-base px-6 mb-5">
+                    Description : <br>{{ $article->description }}
+                </p>
+                <p class="text-gray-800 text-xl px-6 mb-5">
+                    {{ $article->price }} €
+                </p> 
+
+
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    Ajouter au panier
+                </button>
+               
+            </div>
+
+         
+
+
         </div>
     </section>
 
