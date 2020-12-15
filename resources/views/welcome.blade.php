@@ -35,27 +35,29 @@
                 </button>
             </div>
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-                @auth
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                    <li class="mr-3">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center"><li class="mr-3">
 						<a href="{{ route('magasin') }}" class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Magasin</a>
-					</li>
+                    </li>
+                @auth
+                
+                    
                     <a href="{{ route('dashboard') }}"  id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Mon compte
                         </a>
                     @else
-                    <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    
                         <li class="mr-3">
                             <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{ route('login') }}">Login</a>
                         </li>
-                    </ul>
+                   
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}" id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Register
                     </a>
                     @endif
-                </ul>
+                
                 @endif
+            </ul>
             </div>
 
         </div>
