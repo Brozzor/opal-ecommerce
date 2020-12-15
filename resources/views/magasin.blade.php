@@ -85,7 +85,7 @@
     <section class="bg-white border-b py-8">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Dernières tendances
+                Nos articles
             </h1>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -140,20 +140,7 @@
             </g>
         </g>
     </svg>
-    <section class="container mx-auto text-center py-6 mb-12">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-            Contacter nous
-        </h1>
-        <div class="w-full mb-4">
-            <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-        <h3 class="my-4 text-3xl leading-tight">
-            Un problème ? une demande particulière ? n'hesiter pas nous sommes la pour vous répondre !
-        </h3>
-        <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            contactez nous
-        </button>
-    </section>
+
     <!--Footer-->
     <footer class="bg-white">
         <div class="container mx-auto px-8">

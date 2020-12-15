@@ -36,6 +36,8 @@ Route::delete('articles', [AdminArticlesController::class, 'destroy'])->name('ar
 Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->name('articles.update');
 Route::post('articles', [AdminArticlesController::class, 'store'])->name('articles.store');
 
+Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

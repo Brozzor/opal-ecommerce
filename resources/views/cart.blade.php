@@ -100,49 +100,22 @@
     <section class="bg-white border-b py-8">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                {{ $article->name }}
+                Panier
             </h1>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             
-            <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="w-full p-6">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-
-                    <img src="{{ $article->imgLink }}" style="height: 550px" alt="Card image cap">
+                    @if(session()->has('cart'))
+                    <p>possede une session</p>
+                    @endif
 
                 </div>
                
             </div>
-            <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                
-                <u class="text-gray-800 text-base px-6 mb-5">
-                    Marque : {{ $article->brand }}
-                </u>
-                <p class="text-gray-800 text-base px-6 mb-5">
-                    Description : <br>{{ $article->description }}
-                </p>
-                <p class="text-gray-800 text-xl px-6 mb-5">
-                    {{ $article->price }} €
-                </p> 
-                <div class="flex flex-row h-10 rounded-lg relative bg-transparent mt-1">
-                    <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                        <span class="m-auto text-2xl font-thin">−</span>
-                    </button>
-                    <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="1" disabled></input>
-                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-                        <span class="m-auto text-2xl font-thin">+</span>
-                    </button>
-                </div>
-                <form  method="POST" action="#">
-                    @csrf
-                    <input type="hidden" name="quantity" id="quantity" value="1">
-                    <button type="submit" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                        Ajouter au panier
-                    </button>
-                </form>
-               
-            </div>
+            
 
         </div>
     </section>
@@ -314,49 +287,7 @@
             return false;
         }
     </script>
-    <script>
-        function decrement(e) {
-          const btn = e.target.parentNode.parentElement.querySelector(
-            'button[data-action="decrement"]'
-          );
-          const target = btn.nextElementSibling;
-          let value = Number(target.value);
-          if (value != 1){
-              value--;
-          target.value = value;
-          document.getElementById('quantity').value = value;
-          }
-    
-          
-        }
-      
-        function increment(e) {
-          const btn = e.target.parentNode.parentElement.querySelector(
-            'button[data-action="decrement"]'
-          );
-          const target = btn.nextElementSibling;
-          let value = Number(target.value);
-          value++;
-          target.value = value;
-          document.getElementById('quantity').value = value;
-        }
-      
-        const decrementButtons = document.querySelectorAll(
-          `button[data-action="decrement"]`
-        );
-      
-        const incrementButtons = document.querySelectorAll(
-          `button[data-action="increment"]`
-        );
-      
-        decrementButtons.forEach(btn => {
-          btn.addEventListener("click", decrement);
-        });
-      
-        incrementButtons.forEach(btn => {
-          btn.addEventListener("click", increment);
-        });
-      </script>
+
 </body>
 
 </html>
