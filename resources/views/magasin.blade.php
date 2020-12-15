@@ -17,11 +17,12 @@
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <!--Nav-->
     @if (Route::has('register'))
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
             <div class="pl-4 flex items-center">
-                <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="">
                     OPAL HOME
                 </a>
             </div>
@@ -36,9 +37,6 @@
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
                 @auth
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                    <li class="mr-3">
-						<a href="{{ route('magasin') }}" class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Magasin</a>
-					</li>
                     <a href="{{ route('dashboard') }}"  id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Mon compte
                         </a>
@@ -84,9 +82,57 @@
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 Dernières tendances
-            </h1>
+            </h1>            <!-- component -->
+<!-- This is an example component -->
+     <div class="pt-2 relative mx-auto text-gray-600">
+        <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          type="search" name="search" placeholder="Search">
+        <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+            width="512px" height="512px">
+            <path
+              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- component -->
+<!-- This is an example component -->
+<div class="relative inline-flex">
+  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectCP">
+    <option>Catégories</option>
+    <option>Table</option>
+    <option>Vaisselle</option>
+    <option>Canapé</option>
+    <option>Lits</option>
+    <option>Linge</option>
+    <option>Pyjamas</option>
+  </select>
+  </div>
+
+  <div class="relative inline-flex">
+  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectCP">
+    <option>Prix</option>
+    <option>prix croissant</option>
+    <option>prix décroissant</option>
+  </select>
+</div>
+
+<script>
+function findDropPage() {
+  if (document.getElementById("selectCP") != null) {
+    let path = window.location.pathname.split('/');
+    document.getElementById("selectCP").addEventListener("change", function () {
+      window.location = window.location.origin + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/" + document.getElementById("selectCP").value;
+    });
+  }
+}
+</script>
             <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             
             @foreach($articles as $article)
