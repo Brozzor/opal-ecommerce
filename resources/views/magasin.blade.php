@@ -107,20 +107,19 @@
 <!-- This is an example component -->
 <div class="relative inline-flex">
   <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectCP">
-    <option>Catégories</option>
-    <option>Table</option>
-    <option>Vaisselle</option>
-    <option>Canapé</option>
-    <option>Lits</option>
-    <option>Linge</option>
-    <option>Pyjamas</option>
+  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectC">
+    <option value="">Catégorie</option>
+    <option value="table">Table</option>
+    <option value="vaisselle">Vaisselle</option>
+    <option value="canape">Canapé</option>
+    <option value="lit">Lits</option>
+    <option value="linge">Linge</option>
+    <option value="pyjamas">Pyjamas</option>
   </select>
   </div>
-
   <div class="relative inline-flex">
   <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectCP">
+  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectP">
     <option>Prix</option>
     <option>prix croissant</option>
     <option>prix décroissant</option>
@@ -128,14 +127,13 @@
 </div>
 
 <script>
-function findDropPage() {
-  if (document.getElementById("selectCP") != null) {
-    let path = window.location.pathname.split('/');
-    document.getElementById("selectCP").addEventListener("change", function () {
-      window.location = window.location.origin + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/" + document.getElementById("selectCP").value;
+    document.getElementById("selectC").addEventListener("change", function () {
+      window.location = window.location.origin  + "/magasin?categorie=" + document.getElementById("selectC").value;
     });
-  }
-}
+
+    document.getElementById("selectP").addEventListener("change", function () {
+      window.location = window.location.origin + "/magasin?prix="  + document.getElementById("selectP").value;
+    });
 </script>
             <div class="w-full mb-4">
             </div>
