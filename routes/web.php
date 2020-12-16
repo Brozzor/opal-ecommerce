@@ -4,6 +4,9 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminArticlesController;
 use App\Http\Controllers\MagasinController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\NavBarController;
+use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +39,11 @@ Route::delete('articles', [AdminArticlesController::class, 'destroy'])->name('ar
 Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->name('articles.update');
 Route::post('articles', [AdminArticlesController::class, 'store'])->name('articles.store');
 
-Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
+
+Route::post('panier', [CartController::class, 'store'])->name('panier.store');
+Route::get('panier', [CartController::class, 'index'])->name('panier.index');
+
+//Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

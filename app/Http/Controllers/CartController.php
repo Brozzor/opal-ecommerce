@@ -5,8 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Cart;
+
 class CartController extends Controller
 {
+    public function boot()
+    {
+        View::composer(['layouts.app', 'articles.index'], function ($view) {
+            $view->with([
+                'cartCount' => Cart::getTotalQuantity(),
+                'cartTotal' => Cart::getTotal(),
+            ]);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $items = Cart::getContent();
+        return view('cart', compact("items"));
     }
 
     /**
@@ -45,7 +56,7 @@ class CartController extends Controller
                 'quantity' => $request->quantity
             ]
         );
-        return redirect()->back()->with('cart', 'ok');
+        return redirect()->route('panier.index');
     }
 
     /**
