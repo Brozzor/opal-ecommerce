@@ -92,6 +92,7 @@
                 <form  method="POST" action="{{ route('panier.store') }}">
                     @csrf
                     <input type="hidden" name="quantity" id="quantity" value="1">
+                    <input type="hidden" name="id" id="id" value="{{ $article->id }}">
                     <button type="submit" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Ajouter au panier
                     </button>
@@ -121,7 +122,7 @@
     </svg>
 
     <!--Footer-->
-    @include('footer');
+    @include('footer')
     <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");

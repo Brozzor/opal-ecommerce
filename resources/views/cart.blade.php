@@ -68,7 +68,9 @@
                     @if(session()->has('cart'))
                     <p>possede une session</p>
                     @endif
-
+                    @foreach($items as $item)
+                        {{ $item->id }}
+                    @endforeach
                 </div>
                
             </div>
@@ -96,7 +98,7 @@
     </svg>
 
     <!--Footer-->
-    @include('footer');
+    @include('footer')
 
     <script>
         var scrollpos = window.scrollY;

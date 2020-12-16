@@ -116,7 +116,7 @@
         </button>
     </section>
     <!--Footer-->
-    @include('footer');
+    @include('footer')
 
     <script>
         var scrollpos = window.scrollY;

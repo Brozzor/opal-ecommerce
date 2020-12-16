@@ -40,7 +40,7 @@ Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'updat
 Route::post('articles', [AdminArticlesController::class, 'store'])->name('articles.store');
 
 
-Route::post('panier', [CartController::class, 'store'])->name('panier.store');
+Route::post('cart', [CartController::class, 'store'])->name('panier.store');
 Route::get('panier', [CartController::class, 'index'])->name('panier.index');
 
 //Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
