@@ -41,6 +41,7 @@ Route::post('articles', [AdminArticlesController::class, 'store'])->name('articl
 
 
 Route::post('cart', [CartController::class, 'store'])->name('panier.store');
+Route::delete('cart', [CartController::class, 'destroy'])->name('panier.destroy');
 Route::get('panier', [CartController::class, 'index'])->name('panier.index');
 
 //Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);

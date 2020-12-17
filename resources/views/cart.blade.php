@@ -119,8 +119,10 @@
                                 </td>
       
                                 <td class="px-8 py-2">
-                                  <form action="http://127.0.0.1:8000/articles" method="POST">
-                                  <input type="hidden" name="_token" value="NWo9m826qsHGJFYDuHYZ4soPRkLOGOgORUwilr3Q">                            <input type="hidden" name="_method" value="DELETE">                            <input type="hidden" name="id" value="25">
+                                  <form action="{{ route('panier.destroy') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')                        
+                                  <input type="hidden" name="id" value="{{ $item->id }}">
                                   <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
                                      supprimer
                                   </button>
