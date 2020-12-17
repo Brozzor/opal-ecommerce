@@ -64,13 +64,74 @@
             </div>
             
             <div class="w-full p-6">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    @if(session()->has('cart'))
-                    <p>possede une session</p>
-                    @endif
-                    @foreach($items as $item)
-                        {{ $item->id }}
-                    @endforeach
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow text-gray-800">
+                    
+
+                    <table class="min-w-full table-auto">
+                        <thead class="justify-between">
+                          <tr class="bg-gray-800 text-gray-800">
+                            <th class="px-8 py-2">
+
+                            </th>
+                            <th class="px-8 py-2">
+                                <span class="text-gray-300">Nom</span>
+                            </th>
+                            <th class="px-8 py-2">
+                                <span class="text-gray-300">Couleur</span>
+                            </th>
+                            <th class="px-8 py-2">
+                                <span class="text-gray-300">Genre</span>
+                            </th>
+                            <th class="px-8 py-2">
+                                <span class="text-gray-300">Marque</span>
+                            </th>
+                            <th class="px-8 py-2">
+                                <span class="text-gray-300">quantité</span>
+                            </th>
+  
+                            <th class="px-8 py-2">
+                              <span class="text-gray-300"></span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="bg-gray-200">
+                            
+                        @foreach($items as $item)
+                            <tr class="bg-white border-b border-gray-200">
+                                <td>
+                                    <img class="w-16" src="{{ $item->attributes[3] }}" alt="">
+                                  </td>
+                                <td>
+                                  <span class="text-center ml-2 font-semibold">{{ $item->name }}</span>
+                                </td>
+                                <td class="px-8 py-2">
+                                  <span class="text-center ml-2 font-semibold">{{ $item->attributes[0] }}</span>
+                                </td>
+                                <td class="px-8 py-2">
+                                  <span>{{ $item->attributes[2] }}</span>
+                                </td>
+                                <td class="px-8 py-2">
+                                  <span>{{ $item->attributes[1] }}</span>
+                                </td>
+      
+                                <td class="px-8 py-2">
+                                    <span>{{ $item->quantity }}</span>
+                                </td>
+      
+                                <td class="px-8 py-2">
+                                  <form action="http://127.0.0.1:8000/articles" method="POST">
+                                  <input type="hidden" name="_token" value="NWo9m826qsHGJFYDuHYZ4soPRkLOGOgORUwilr3Q">                            <input type="hidden" name="_method" value="DELETE">                            <input type="hidden" name="id" value="25">
+                                  <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
+                                     supprimer
+                                  </button>
+                                  </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                          
+                          
+                        </tbody>
+                      </table>
                 </div>
                
             </div>
