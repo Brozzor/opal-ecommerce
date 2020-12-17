@@ -84,12 +84,21 @@
 
 <script>
     document.getElementById("selectC").addEventListener("change", function () {
-      window.location = window.location.origin  + "/magasin?categorie=" + document.getElementById("selectC").value ;
+      window.location = window.location.origin  + "/magasin?categorie=" + document.getElementById("selectC").value;
+      document.getElementById("selectC").setAttribute("selected");
+      console.log(document.getElementById("selectC").value)
     });
 
     document.getElementById("selectP").addEventListener("change", function () {
       window.location = window.location.search + "&prix="  + document.getElementById("selectP").value;
     });
+
+    function selected() {
+        
+    }
+
+    window.onload = selected;
+
 </script>
             <div class="w-full mb-4">
             </div>
