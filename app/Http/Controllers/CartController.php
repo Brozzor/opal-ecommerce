@@ -53,6 +53,7 @@ class CartController extends Controller
                 'id' => $article->id,
                 'name' => $article->name,
                 'price' => $article->price,
+                'attributes' => [$article->color, $article->brand, $article->genre,$article->imgLink],
                 'quantity' => $request->quantity
             ]
         );
