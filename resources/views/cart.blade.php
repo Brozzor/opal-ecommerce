@@ -66,7 +66,7 @@
             <div class="w-full p-6">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow text-gray-800">
                     
-
+                    @if (count($items))
                     <table class="min-w-full table-auto">
                         <thead class="justify-between">
                           <tr class="bg-gray-800 text-gray-800">
@@ -134,6 +134,9 @@
                           
                         </tbody>
                       </table>
+                      @else
+                      <center><p>Vous n'avez ajouter aucun produit dans votre panier</p></center>
+                      @endif
                 </div>
                
             </div>
