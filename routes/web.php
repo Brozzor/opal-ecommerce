@@ -5,8 +5,7 @@ use App\Http\Controllers\AdminArticlesController;
 use App\Http\Controllers\MagasinController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\NavBarController;
-use App\Http\Controllers\FooterController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,15 +33,16 @@ Route::get('/article/{id}', [ArticleController::class, 'index'])->name('article.
 Route::get('/admin/articles', [AdminArticlesController::class, 'index'])->middleware('admin')->name('articles.index');
 Route::get('/admin/article/{id}/edit', [AdminArticlesController::class, 'edit'])->middleware('admin')->name('articles.edit');
 Route::get('/admin/article/add', [AdminArticlesController::class, 'add'])->middleware('admin')->name('articles.add');
-
-Route::delete('articles', [AdminArticlesController::class, 'destroy'])->name('articles.destroy');
-Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->name('articles.update');
-Route::post('articles', [AdminArticlesController::class, 'store'])->name('articles.store');
-
+Route::delete('articles', [AdminArticlesController::class, 'destroy'])->middleware('admin')->name('articles.destroy');
+Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->middleware('admin')->name('articles.update');
+Route::post('articles', [AdminArticlesController::class, 'store'])->middleware('admin')->name('articles.store');
 
 Route::post('cart', [CartController::class, 'store'])->name('panier.store');
 Route::delete('cart', [CartController::class, 'destroy'])->name('panier.destroy');
 Route::get('panier', [CartController::class, 'index'])->name('panier.index');
+
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
 
 //Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
 

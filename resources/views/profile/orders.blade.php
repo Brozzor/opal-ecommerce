@@ -19,17 +19,7 @@
                       <thead class="justify-between">
                         <tr class="bg-gray-800">
                           <th class="px-8 py-2">
-                            <span class="text-gray-300">Nom</span>
-                          </th>
-                          <th class="px-8 py-2">
-                            <span class="text-gray-300">Couleur</span>
-                          </th>
-                          <th class="px-8 py-2">
-                            <span class="text-gray-300">Genre</span>
-                          </th>
-              
-                          <th class="px-8 py-2">
-                            <span class="text-gray-300">Marque</span>
+                            <span class="text-gray-300">commande n°</span>
                           </th>
               
                           <th class="px-8 py-2">
@@ -49,33 +39,24 @@
                         @foreach($orders as $order) 
                         <tr class="bg-white border-b border-gray-200">
                           <td>
-                            <span class="text-center ml-2 font-semibold">{{ $order->name }}</span>
-                          </td>
-                          <td class="px-8 py-2">
-                            <span class="text-center ml-2 font-semibold">{{ $order->color }}</span>
-                          </td>
-                          <td class="px-8 py-2">
-                            <span>{{ $order->genre }}</span>
-                          </td>
-                          <td class="px-8 py-2">
-                            <span>{{ $order->brand }}</span>
-                          </td>
-              
-                          <td class="px-8 py-2">
-                            <span>{{ $order->created_at }}</span>
+                            <span class="text-center ml-2 font-semibold">{{ $order['id'] }}</span>
                           </td>
 
                           <td class="px-8 py-2">
-                            <a href="{{ route('orders.edit', $order->id) }}" class="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">
-                                éditer
+                            <span>{{ $order['created_at'] }}</span>
+                          </td>
+
+                          <td class="px-8 py-2">
+                            <a href="" class="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">
+                                voir
                             </a>
                           </td>
 
                           <td class="px-8 py-2">
-                            <form action="{{ route('orders.destroy') }}" method="POST">
+                            <form action="" method="POST">
                             @csrf
                             @method('DELETE')
-                            <input type="hidden" name="id" value="{{ $order->id }}">
+                            <input type="hidden" name="id" value="">
                             <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
                                supprimer
                             </button>
@@ -90,7 +71,7 @@
                   </div>
             </div>
             <div class="mt-3">
-              {{ $orders->links() }}
+              
             </div>
             
         </div>
