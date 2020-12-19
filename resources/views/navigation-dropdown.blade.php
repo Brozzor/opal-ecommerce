@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                       <img class="h-10" src="https://www.opal02.com/wp-content/uploads/2019/11/logo-opal.jpg" alt="">
                     </a>
                 </div>
 
