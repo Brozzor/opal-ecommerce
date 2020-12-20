@@ -11,34 +11,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    
+
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <style>
         input[type='number']::-webkit-inner-spin-button,
         input[type='number']::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
-      
+
         .custom-number-input input:focus {
-          outline: none !important;
+            outline: none !important;
         }
-      
+
         .custom-number-input button:focus {
-          outline: none !important;
+            outline: none !important;
         }
-      </style>
+    </style>
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
-    
+
     @include('navbar')
 
-        <!--Right Col-->
-        <div class="w-full md:w-3/5 py-6 text-center">
+    <!--Right Col-->
+    <div class="w-full md:w-3/5 py-6 text-center">
 
-        </div>
+    </div>
     </div>
     <div class="relative -mt-12 lg:-mt-24">
         <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -62,85 +62,142 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            
+
             <div class="w-full p-6">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow text-gray-800">
-                    
+
                     @if (count($items))
                     <table class="min-w-full table-auto">
                         <thead class="justify-between">
-                          <tr class="bg-gray-800 text-gray-800">
-                            <th class="px-8 py-2">
+                            <tr class="bg-gray-800 text-gray-800">
+                                <th class="px-8 py-2">
 
-                            </th>
-                            <th class="px-8 py-2">
-                                <span class="text-gray-300">Nom</span>
-                            </th>
-                            <th class="px-8 py-2">
-                                <span class="text-gray-300">Couleur</span>
-                            </th>
-                            <th class="px-8 py-2">
-                                <span class="text-gray-300">Genre</span>
-                            </th>
-                            <th class="px-8 py-2">
-                                <span class="text-gray-300">Marque</span>
-                            </th>
-                            <th class="px-8 py-2">
-                                <span class="text-gray-300">quantité</span>
-                            </th>
-  
-                            <th class="px-8 py-2">
-                              <span class="text-gray-300"></span>
-                            </th>
-                          </tr>
+                                </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">Nom</span>
+                                </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">Couleur</span>
+                                </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">Genre</span>
+                                </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">Marque</span>
+                                </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">quantité</span>
+                                </th>
+
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300"></span>
+                                </th>
+                            </tr>
                         </thead>
                         <tbody class="bg-gray-200">
-                            
-                        @foreach($items as $item)
+
+                            @foreach($items as $item)
                             <tr class="bg-white border-b border-gray-200">
                                 <td>
                                     <img class="w-16" src="{{ $item->attributes[3] }}" alt="">
-                                  </td>
+                                </td>
                                 <td>
-                                  <span class="text-center ml-2 font-semibold">{{ $item->name }}</span>
+                                    <span class="text-center ml-2 font-semibold">{{ $item->name }}</span>
                                 </td>
                                 <td class="px-8 py-2">
-                                  <span class="text-center ml-2 font-semibold">{{ $item->attributes[0] }}</span>
+                                    <span class="text-center ml-2 font-semibold">{{ $item->attributes[0] }}</span>
                                 </td>
                                 <td class="px-8 py-2">
-                                  <span>{{ $item->attributes[2] }}</span>
+                                    <span>{{ $item->attributes[2] }}</span>
                                 </td>
                                 <td class="px-8 py-2">
-                                  <span>{{ $item->attributes[1] }}</span>
+                                    <span>{{ $item->attributes[1] }}</span>
                                 </td>
-      
+
                                 <td class="px-8 py-2">
                                     <span>{{ $item->quantity }}</span>
                                 </td>
-      
+
                                 <td class="px-8 py-2">
-                                  <form action="{{ route('panier.destroy') }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')                        
-                                  <input type="hidden" name="id" value="{{ $item->id }}">
-                                  <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
-                                     supprimer
-                                  </button>
-                                  </form>
+                                    <form action="{{ route('panier.destroy') }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
+                                            supprimer
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
-                        @endforeach
-                          
-                          
+                            @endforeach
+
+
                         </tbody>
-                      </table>
-                      @else
-                      <center><p>Vous n'avez ajouter aucun produit dans votre panier</p></center>
-                      @endif
+                    </table>
                 </div>
-               
+
+                <h2 class="w-full my-2 text-5md font-bold leading-tight text-center text-gray-800 mt-6">
+                        Mes informations de livraison
+                    </h2>
+                <div class="grid grid-cols-6 gap-6 mt-2">
+                    
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="firstname">
+                            Prénom
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="firstname">
+                    </div>
+
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="lastname">
+                            Nom
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="lastname">
+                    </div>
+
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="address">
+                            addresse
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="address">
+                    </div>
+
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="city">
+                            Ville
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="city">
+                    </div>
+
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="zip">
+                            code postal
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="zip">
+                    </div>
+
+                    <div class="col-span-8">
+                        <label class="block font-medium text-sm text-gray-700" for="country">
+                            Pays
+                        </label>
+                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="country">
+                    </div>
+
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                        Payer
+                    </button>
+
+                </div>
+
+                @else
+                <center>
+                    <p>Vous n'avez ajouter aucun produit dans votre panier</p>
+                </center>
+                @endif
+
+
             </div>
-            
+
 
         </div>
     </section>

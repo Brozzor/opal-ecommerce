@@ -18,6 +18,8 @@ class UpdateOrdersTableAddAddressInformation extends Migration
             $table->string('city');
             $table->integer('zip');
             $table->string('country');
+            $table->string('firstname');
+            $table->string('lastname');
         });
     }
 
