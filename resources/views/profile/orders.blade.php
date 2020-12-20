@@ -27,7 +27,7 @@
                           </th>
 
                           <th class="px-8 py-2">
-                            <span class="text-gray-300"></span>
+                            <span class="text-gray-300">Prix</span>
                           </th>
 
                           <th class="px-8 py-2">
@@ -39,11 +39,15 @@
                         @foreach($orders as $order) 
                         <tr class="bg-white border-b border-gray-200">
                           <td>
-                            <span class="text-center ml-2 font-semibold">{{ $order['id'] }}</span>
+                            <span class="text-center ml-2 font-semibold">{{ $order->id }}</span>
                           </td>
 
                           <td class="px-8 py-2">
-                            <span>{{ $order['created_at'] }}</span>
+                            <span>{{ $order->created_at }}</span>
+                          </td>
+
+                          <td class="px-8 py-2">
+                            <span>{{ $order->price }}€</span>
                           </td>
 
                           <td class="px-8 py-2">
@@ -52,16 +56,6 @@
                             </a>
                           </td>
 
-                          <td class="px-8 py-2">
-                            <form action="" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="hidden" name="id" value="">
-                            <button type="submit" class="bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-red-500 hover:text-black ">
-                               supprimer
-                            </button>
-                            </form>
-                          </td>
                         </tr>
                         @endforeach
 
