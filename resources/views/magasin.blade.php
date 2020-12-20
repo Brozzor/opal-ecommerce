@@ -83,11 +83,11 @@
 </div>
 
 <script>
-document.getElementById("selectC").value = "categorie";
+
     document.getElementById("selectC").addEventListener("change", function () {
       window.location = window.location.origin  + "/magasin?categorie=" + document.getElementById("selectC").value;
     });
-    document.getElementById("selectP").value = "pertinence";
+
     document.getElementById("selectP").addEventListener("change", function () {
       window.location = window.location.search + "&prix="  + document.getElementById("selectP").value;
     });
