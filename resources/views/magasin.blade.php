@@ -64,7 +64,7 @@
 <div class="relative inline-flex">
   <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
   <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectC">
-    <option value="">Catégorie</option>
+    <option value="categorie">Catégorie</option>
     <option value="table">Table</option>
     <option value="vaisselle">Vaisselle</option>
     <option value="canape">Canapé</option>
@@ -76,28 +76,43 @@
   <div class="relative inline-flex">
   <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
   <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectP">
-    <option value="">Pertinence</option>
+    <option value="pertinence">Pertinence</option>
     <option value="croissant">Prix croissant</option>
     <option value="decroissant">Prix décroissant</option>
   </select>
 </div>
 
 <script>
+document.getElementById("selectC").value = "categorie";
     document.getElementById("selectC").addEventListener("change", function () {
       window.location = window.location.origin  + "/magasin?categorie=" + document.getElementById("selectC").value;
-      document.getElementById("selectC").setAttribute("selected");
-      console.log(document.getElementById("selectC").value)
     });
-
+    document.getElementById("selectP").value = "pertinence";
     document.getElementById("selectP").addEventListener("change", function () {
       window.location = window.location.search + "&prix="  + document.getElementById("selectP").value;
     });
 
-    function selected() {
-        
+    function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+    console.log(getParameterByName('categorie'))
+
+    if (getParameterByName("categorie") === "") {
+        console.log("empty")
+    }
+    else {
+        document.getElementById("selectC").value = getParameterByName('categorie')
     }
 
-    window.onload = selected;
+//if (getParameterByName('categorie') === "vaisselle") {
+    //document.getElementById("selectC").value = "vaisselle";
+    //console.log("yes")
+//} 
 
 </script>
             <div class="w-full mb-4">
