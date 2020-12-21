@@ -6,24 +6,9 @@ use App\Http\Controllers\MagasinController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
- 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
@@ -36,6 +21,13 @@ Route::get('/admin/article/add', [AdminArticlesController::class, 'add'])->middl
 Route::delete('articles', [AdminArticlesController::class, 'destroy'])->middleware('admin')->name('articles.destroy');
 Route::put('/admin/article/{id}/update', [AdminArticlesController::class, 'update'])->middleware('admin')->name('articles.update');
 Route::post('articles', [AdminArticlesController::class, 'store'])->middleware('admin')->name('articles.store');
+
+Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('admin')->name('users.index');
+Route::get('/admin/user/{id}/edit', [AdminUsersController::class, 'edit'])->middleware('admin')->name('users.edit');
+Route::get('/admin/user/add', [AdminUsersController::class, 'add'])->middleware('admin')->name('users.add');
+Route::delete('users', [AdminUsersController::class, 'destroy'])->middleware('admin')->name('users.destroy');
+Route::put('/admin/user/{id}/update', [AdminUsersController::class, 'update'])->middleware('admin')->name('users.update');
+Route::post('users', [AdminUsersController::class, 'store'])->middleware('admin')->name('users.store');
 
 Route::post('cart', [CartController::class, 'store'])->name('panier.store');
 Route::delete('cart', [CartController::class, 'destroy'])->name('panier.destroy');
