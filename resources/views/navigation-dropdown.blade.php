@@ -67,7 +67,7 @@
                             {{ __('Admin') }}
                         </div>
 
-                        <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                        <x-jet-dropdown-link href="{{ route('users.index') }}">
                             {{ __('Users') }}
                         </x-jet-dropdown-link>
 
@@ -156,7 +156,7 @@
                     {{ __('Admin') }}
                 </div>
 
-                <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                <x-jet-dropdown-link href="{{ route('users.index') }}">
                     {{ __('Users') }}
                 </x-jet-dropdown-link>
 
