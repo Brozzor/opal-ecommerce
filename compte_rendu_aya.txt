@@ -3,3 +3,5 @@ CRUD laravel
 
 ajout de 60 articles : 6 catégories "table, chaise, linge, vaisselle, pyjamas, canape" 
 sur la base donnée (php my admin)
+
+creation compte stripe pour paiment 
