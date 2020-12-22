@@ -88,6 +88,9 @@
                                 <th class="px-8 py-2">
                                     <span class="text-gray-300">quantité</span>
                                 </th>
+                                <th class="px-8 py-2">
+                                    <span class="text-gray-300">prix unitaire</span>
+                                </th>
 
                                 <th class="px-8 py-2">
                                     <span class="text-gray-300"></span>
@@ -119,6 +122,10 @@
                                 </td>
 
                                 <td class="px-8 py-2">
+                                    <span>{{ $item->attributes[4] }}€</span>
+                                </td>
+
+                                <td class="px-8 py-2">
                                     <form action="{{ route('panier.destroy') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -137,58 +144,60 @@
                 </div>
 
                 <h2 class="w-full my-2 text-5md font-bold leading-tight text-center text-gray-800 mt-6">
-                        Mes informations de livraison
-                    </h2>
-                <div class="grid grid-cols-6 gap-6 mt-2">
-                    
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="firstname">
-                            Prénom
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="firstname">
+                    Mes informations de livraison
+                </h2>
+                <form action="{{ route('orders.store')}}" method="POST">
+                    @csrf
+                    <div class="grid grid-cols-6 gap-6 mt-2">
+                        <input type="hidden" id="articlesOrder" name="articles" value="">
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="firstname">
+                                Prénom
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="firstname">
+                        </div>
+
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="lastname">
+                                Nom
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="lastname">
+                        </div>
+
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="address">
+                                adresse
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="address">
+                        </div>
+
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="city">
+                                Ville
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="city">
+                        </div>
+
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="zip">
+                                code postal
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="zip">
+                        </div>
+
+                        <div class="col-span-8">
+                            <label class="block font-medium text-sm text-gray-700" for="country">
+                                Pays
+                            </label>
+                            <input class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" type="text" name="country">
+                        </div>
+
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                            Payer
+                        </button>
+
                     </div>
-
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="lastname">
-                            Nom
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="lastname">
-                    </div>
-
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="address">
-                            addresse
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="address">
-                    </div>
-
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="city">
-                            Ville
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="city">
-                    </div>
-
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="zip">
-                            code postal
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="zip">
-                    </div>
-
-                    <div class="col-span-8">
-                        <label class="block font-medium text-sm text-gray-700" for="country">
-                            Pays
-                        </label>
-                        <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" name="country">
-                    </div>
-
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                        Payer
-                    </button>
-
-                </div>
-
+                </form>
                 @else
                 <center>
                     <p>Vous n'avez ajouter aucun produit dans votre panier</p>
@@ -305,6 +314,11 @@
             }
             return false;
         }
+    </script>
+    <script>
+        const allArticles = `@foreach($items as $item){{ $item->id }}*{{ $item->quantity }}-@endforeach`
+
+        const articlesOrder = document.getElementById('articlesOrder').value = allArticles;
     </script>
 
 </body>

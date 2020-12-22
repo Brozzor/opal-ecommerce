@@ -34,6 +34,7 @@ Route::delete('cart', [CartController::class, 'destroy'])->name('panier.destroy'
 Route::get('panier', [CartController::class, 'index'])->name('panier.index');
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 
 
 //Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
