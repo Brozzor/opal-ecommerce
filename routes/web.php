@@ -42,3 +42,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/search', ['uses' => 'SearchController@recherche', 'as' => 'search']);
+
