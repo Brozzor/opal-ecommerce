@@ -27,7 +27,7 @@ class CartController extends Controller
                 'quantity' => $request->quantity
             ]
         );
-        return redirect()->route('panier.index');
+        return redirect()->route('checkout.index');
     }
 
     public function destroy(Request $request)

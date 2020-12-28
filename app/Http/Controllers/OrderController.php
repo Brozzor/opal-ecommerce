@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Cart;
+
 class OrderController extends Controller
 {
     public function index()
@@ -18,10 +19,10 @@ class OrderController extends Controller
     {
         $finallyPrice = 0;
         $items = Cart::getContent();
-        foreach($items as $item){
+        foreach ($items as $item) {
             $finallyPrice += $item->attributes[4];
         }
-        
+
         $order = new Order();
         $order->articles = $request->get('articles');
         $order->status = "impayer";
@@ -40,4 +41,5 @@ class OrderController extends Controller
 
         return redirect()->route('orders.index');
     }
+
 }

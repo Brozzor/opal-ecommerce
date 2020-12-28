@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,3 +46,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/search', ['uses' => 'SearchController@recherche', 'as' => 'search']);
 
+Route::get('/paiement', [CheckoutController::class, 'index'])->name('checkout.index');
