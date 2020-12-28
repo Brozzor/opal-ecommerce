@@ -16,10 +16,16 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $finallyPrice = 0;
+        $items = Cart::getContent();
+        foreach($items as $item){
+            $finallyPrice += $item->attributes[4];
+        }
+        
         $order = new Order();
         $order->articles = $request->get('articles');
         $order->status = "impayer";
-        $order->price = 250.00;
+        $order->price = $finallyPrice;
         $order->uid = Auth::user()->id;
         $order->address = $request->get('address');
         $order->city = $request->get('city');
