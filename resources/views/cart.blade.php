@@ -337,12 +337,13 @@
             const city = document.getElementById("city").value;
             const zip = document.getElementById("zip").value;
             const country = document.getElementById("country").value;
+            const articlesOrder = document.getElementById("articlesOrder").value;
             if (!firstname || !lastname || !address || !city || !zip || !country)
             {
                 alert('Vous devez remplir toutes les informations de livraison');
                 return false;
             }
-            fetch(`/paiement?firstname=${firstname}&lastname=${lastname}&address=${address}&city=${city}&zip=${zip}&country=${country}`, {
+            fetch(`/paiement?firstname=${firstname}&lastname=${lastname}&address=${address}&city=${city}&zip=${zip}&country=${country}&articles=${articlesOrder}`, {
                     method: "GET",
                 })
                 .then(function(response) {

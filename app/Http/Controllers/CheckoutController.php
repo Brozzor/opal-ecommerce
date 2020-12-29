@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use Cart;
 
 class CheckoutController extends Controller
 {
@@ -13,29 +16,52 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         Stripe::setApiKey('sk_test_51D3YQjCyr3LKJht0OBQHaTj1loKaHy5o8El1NK3BHTwZhffclg193oPVt0NCjcAtjfQt4l0go379sVJD4GRgGwcP00og7GKmwy');
+
+        $finallyPrice = 0;
+        $items = Cart::getContent();
+        foreach ($items as $item) {
+            $finallyPrice += $item->attributes[4];
+        }
+
+        $order = new Order();
+        $order->articles = $request->get('articles');
+        $order->status = "impayer";
+        $order->price = $finallyPrice;
+        $order->uid = Auth::user()->id;
+        $order->address = $request->get('address');
+        $order->city = $request->get('city');
+        $order->zip = intval($request->get('zip'));
+        $order->country = $request->get('country');
+        $order->firstname = $request->get('firstname');
+        $order->lastname = $request->get('lastname');
+        $order->created_at = date('Y-m-d H:i:s');
+        $order->updated_at = date('Y-m-d H:i:s');
+
+        $order->save();
 
         $domain = "https://opal-ecommerce.herokuapp.com";
         $checkout_session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
-              'price_data' => [
-                'currency' => 'eur',
-                'unit_amount' => 2000,
-                'product_data' => [
-                  'name' => 'Stubborn Attachments',
-                  'images' => ["https://i.imgur.com/EHyR2nP.png"],
+                'price_data' => [
+                    'currency' => 'eur',
+                    'unit_amount' => $finallyPrice*100,
+                    'product_data' => [
+                        'name' => 'Stubborn Attachments',
+                        'images' => ["https://i.imgur.com/EHyR2nP.png"],
+                    ],
                 ],
-              ],
-              'quantity' => 1,
+                'quantity' => 1,
             ]],
+
             'mode' => 'payment',
             'success_url' => $domain . '/success.html',
             'cancel_url' => $domain . '/cancel.html',
-          ]);
-          echo json_encode(['id' => $checkout_session->id]);
+        ]);
+        echo json_encode(['id' => $checkout_session->id]);
     }
 
     /**
