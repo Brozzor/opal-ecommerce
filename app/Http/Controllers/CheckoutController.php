@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -13,7 +15,27 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout.index')
+        Stripe::setApiKey('sk_test_51D3YQjCyr3LKJht0OBQHaTj1loKaHy5o8El1NK3BHTwZhffclg193oPVt0NCjcAtjfQt4l0go379sVJD4GRgGwcP00og7GKmwy');
+
+        $domain = "https://opal-ecommerce.herokuapp.com";
+        $checkout_session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+              'price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => 2000,
+                'product_data' => [
+                  'name' => 'Stubborn Attachments',
+                  'images' => ["https://i.imgur.com/EHyR2nP.png"],
+                ],
+              ],
+              'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => $domain . '/success.html',
+            'cancel_url' => $domain . '/cancel.html',
+          ]);
+          echo json_encode(['id' => $checkout_session->id]);
     }
 
     /**

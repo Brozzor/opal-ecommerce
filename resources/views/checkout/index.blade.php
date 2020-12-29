@@ -175,11 +175,6 @@
             return false;
         }
     </script>
-    <script>
-        const allArticles = `@foreach($items as $item){{ $item->id }}*{{ $item->quantity }}-@endforeach`
-
-        const articlesOrder = document.getElementById('articlesOrder').value = allArticles;
-    </script>
 
 </body>
 

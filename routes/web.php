@@ -47,3 +47,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/search', ['uses' => 'SearchController@recherche', 'as' => 'search']);
 
 Route::get('/paiement', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/paiement/hooks', [CheckoutController::class, 'edit'])->name('checkout.edit');
