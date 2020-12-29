@@ -50,16 +50,15 @@ class CheckoutController extends Controller
                     'currency' => 'eur',
                     'unit_amount' => $finallyPrice*100,
                     'product_data' => [
-                        'name' => 'Stubborn Attachments',
-                        'images' => ["https://i.imgur.com/EHyR2nP.png"],
+                        'name' => "Opal commande n° $order->id"
                     ],
                 ],
                 'quantity' => 1,
             ]],
-
+            "client_reference_id" => $order->id,
             'mode' => 'payment',
-            'success_url' => $domain . '/success.html',
-            'cancel_url' => $domain . '/cancel.html',
+            'success_url' => $domain . '/orders',
+            'cancel_url' => $domain . '/panier',
         ]);
         echo json_encode(['id' => $checkout_session->id]);
     }
