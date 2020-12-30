@@ -19,7 +19,7 @@ class CheckoutController extends Controller
         $finallyPrice = 0;
         $items = Cart::getContent();
         foreach ($items as $item) {
-            $finallyPrice += $item->attributes[4];
+            $finallyPrice += ($item->attributes[4] * $item->quantity);
         }
 
         $order = new Order();
