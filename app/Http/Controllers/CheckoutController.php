@@ -40,19 +40,17 @@ class CheckoutController extends Controller
 
         $domain = "https://opal-ecommerce.herokuapp.com";
         $checkout_session = Session::create([
+            'customer_email' => Auth::user()->email,
             'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price_data' => [
+            'line_items' => [
+                [
                     'currency' => 'eur',
-                    'unit_amount' => $finallyPrice * 100,
-                    'product_data' => [
-                        'name' => "Opal commande n° $order->id"
-                    ],
-                ],
-                'quantity' => 1,
-            ]],
+                    'amount' => $finallyPrice * 100,
+                    'name' => "Opal commande n° $order->id",
+                    'quantity' => 1,
+                ]
+            ],
             "client_reference_id" => $order->id,
-            'mode' => 'payment',
             'success_url' => $domain . '/orders',
             'cancel_url' => $domain . '/panier',
         ]);
@@ -71,28 +69,28 @@ class CheckoutController extends Controller
 
         try {
             $event = Webhook::constructEvent(
-                $payload, $sig_header, $endpoint_secret
+                $payload,
+                $sig_header,
+                $endpoint_secret
             );
-        } catch(\UnexpectedValueException $e) {
+        } catch (\UnexpectedValueException $e) {
             // Invalid payload
             http_response_code(400);
             exit();
-        } catch(\Stripe\Exception\SignatureVerificationException $e) {
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
             // Invalid signature
             http_response_code(400);
             exit();
         }
-        if ($event->type == "checkout.session.completed"){
+        if ($event->type == "checkout.session.completed") {
             $session = $event->data->object;
             $order = Order::find($session->client_reference_id);
-            if ($order){
+            if ($order) {
                 $order->status = "payer";
                 $order->updated_at = date('Y-m-d H:i:s');
                 $order->save();
             }
             http_response_code(200);
-            
         }
     }
-
 }
