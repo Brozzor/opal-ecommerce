@@ -27,6 +27,10 @@
                           </th>
 
                           <th class="px-8 py-2">
+                            <span class="text-gray-300">Status</span>
+                          </th>
+
+                          <th class="px-8 py-2">
                             <span class="text-gray-300"></span>
                           </th>
                         </tr>
@@ -44,6 +48,10 @@
 
                           <td class="px-8 py-2">
                             <span>{{ $order->price }}€</span>
+                          </td>
+
+                          <td class="px-8 py-2">
+                            <span>{{ $order->status }}</span>
                           </td>
 
                           <td class="px-8 py-2">

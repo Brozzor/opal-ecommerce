@@ -11,19 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    
+
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
 
-        @include('navbar')
+    @include('navbar')
 
-        <!--Right Col-->
-        <div class="w-full md:w-3/5 py-6 text-center">
+    <!--Right Col-->
+    <div class="w-full md:w-3/5 py-6 text-center">
 
-        </div>
+    </div>
     </div>
     <div class="relative -mt-12 lg:-mt-24">
         <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -43,6 +43,7 @@
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 Dernières tendances
+<<<<<<< HEAD
             </h1>            <!-- component -->
     <!-- This is an example component -->
      <div class="pt-2 relative mx-auto text-gray-600">
@@ -108,29 +109,81 @@
     else {
         document.getElementById("selectC").value = getParameterByName('categorie')
     }
+=======
+            </h1>
+            <div class="mx-auto">
 
-//if (getParameterByName('categorie') === "vaisselle") {
-    //document.getElementById("selectC").value = "vaisselle";
-    //console.log("yes")
-//} 
 
-</script>
+                <div class="relative inline-flex">
+                    <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232">
+                        <path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero" /></svg>
+                    <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectC">
+                        <option value="all">Catégorie</option>
+                        <option value="table">Table</option>
+                        <option value="vaisselle">Vaisselle</option>
+                        <option value="canape">Canapé</option>
+                        <option value="lit">Lits</option>
+                        <option value="linge">Linge</option>
+                        <option value="pyjamas">Pyjamas</option>
+                    </select>
+                </div>
+                <div class="relative inline-flex">
+                    <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232">
+                        <path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero" /></svg>
+                    <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" id="selectP">
+                        <option value="pertinence">Pertinence</option>
+                        <option value="croissant">Prix croissant</option>
+                        <option value="decroissant">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
+            <script>
+                document.getElementById("selectC").addEventListener("change", function() {
+                    window.location = window.location.origin + "/magasin?categorie=" + document.getElementById("selectC").value;
+                });
+
+                document.getElementById("selectP").addEventListener("change", function() {
+                    window.location = window.location.search + "&prix=" + document.getElementById("selectP").value;
+                });
+
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+                console.log(getParameterByName('categorie'))
+>>>>>>> 6e30c7bee7c6c929aca15b601efbe03b7a79edd3
+
+                if (getParameterByName("categorie") === "") {
+                    console.log("empty")
+                } else {
+                    document.getElementById("selectC").value = getParameterByName('categorie')
+                }
+
+                //if (getParameterByName('categorie') === "vaisselle") {
+                //document.getElementById("selectC").value = "vaisselle";
+                //console.log("yes")
+                //} 
+            </script>
             <div class="w-full mb-4">
             </div>
-            
+
             @foreach($articles as $article)
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <a href="{{ route('article.index', $article->id) }}" class="flex flex-wrap no-underline hover:no-underline">
-                    <img src="{{ $article->imgLink }}" style="height: 550px" alt="Card image cap">
+                        <img src="{{ $article->imgLink }}" style="height: 550px" alt="Card image cap">
                         <div class="w-full font-bold text-xl text-gray-800 px-6 mt-4 mb-4">
                             {{ $article->name }}
                         </div>
                         <p class="text-gray-800 text-base px-6 mb-5">
-                        {{ $article->description }}
+                            {{ $article->description }}
                         </p>
                         <p class="text-gray-800 text-base px-6 mb-5">
-                        {{ $article->price }} €
+                            {{ $article->price }} €
                         </p>
                     </a>
                 </div>
@@ -143,7 +196,7 @@
                 </div>
             </div>
             @endforeach
-          
+
         </div>
         <div class="container mx-auto pt-4 pb-12">
             {{ $articles->links() }}
