@@ -138,7 +138,35 @@
                                 </td>
                             </tr>
                             @endforeach
+                            <tr class="bg-white border-b border-gray-200">
+                                <td>
+                                   
+                                </td>
+                                <td>
+                                    <span class="text-center ml-2 font-semibold">Total</span>
+                                </td>
+                                <td class="px-8 py-2">
 
+                                </td>
+                                <td class="px-8 py-2">
+
+                                </td>
+                                <td class="px-8 py-2">
+
+                                </td>
+
+                                <td class="px-8 py-2">
+                                    <span>TVA 20%</span>
+                                </td>
+
+                                <td class="px-8 py-2">
+                                    <span>HT {{ $finallyPrice - (($finallyPrice/100)*20) }}€</span>
+                                </td>
+
+                                <td class="px-8 py-2">
+                                    <span>TTC {{ $finallyPrice }}€</span>
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>

@@ -11,7 +11,12 @@ class CartController extends Controller
     public function index()
     {
         $items = Cart::getContent();
-        return view('cart', compact("items"));
+
+        $finallyPrice = 0;
+        foreach ($items as $item) {
+            $finallyPrice += ($item->attributes[4] * $item->quantity);
+        }
+        return view('cart')->with('items',$items)->with('finallyPrice', $finallyPrice);
     }
 
     public function store(Request $request)
