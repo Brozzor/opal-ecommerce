@@ -8,6 +8,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\MentionsLegalesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,8 @@ Route::get('panier', [CartController::class, 'index'])->name('panier.index');
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
+
+Route::get('/mentions', [MentionsLegalesController::class, 'index'])->name('mentions');
 
 
 //Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
