@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Stripe\Stripe;
+use Stripe\Webhook;
 use Stripe\Checkout\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,7 @@ class CheckoutController extends Controller
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => $finallyPrice*100,
+                    'unit_amount' => $finallyPrice * 100,
                     'product_data' => [
                         'name' => "Opal commande n° $order->id"
                     ],
@@ -101,9 +102,32 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        //Stripe::setApiKey('sk_test_51D3YQjCyr3LKJht0OBQHaTj1loKaHy5o8El1NK3BHTwZhffclg193oPVt0NCjcAtjfQt4l0go379sVJD4GRgGwcP00og7GKmwy');
+        Stripe::setApiKey('pk_test_D4eqTbqTbXHUCPtqrLGdH0aa');
+        $endpoint_secret = "whsec_GPgvKimw0sf5DnSPxbZAP8uK9f9nzAc9";
+
+        $payload = @file_get_contents('php://input');
+        $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+        $event = null;
+
+        try {
+            $event = Webhook::constructEvent(
+                $payload, $sig_header, $endpoint_secret
+            );
+        } catch(\UnexpectedValueException $e) {
+            // Invalid payload
+            http_response_code(400);
+            exit();
+        } catch(\Stripe\Exception\SignatureVerificationException $e) {
+            // Invalid signature
+            http_response_code(400);
+            exit();
+        }
+        if ($event->type == "checkout.session.completed"){
+            dd($event);
+        }
     }
 
     /**
