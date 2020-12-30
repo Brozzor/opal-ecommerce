@@ -104,8 +104,8 @@ class CheckoutController extends Controller
      */
     public function edit(Request $request)
     {
-        Stripe::setApiKey('sk_test_51D3YQjCyr3LKJht0OBQHaTj1loKaHy5o8El1NK3BHTwZhffclg193oPVt0NCjcAtjfQt4l0go379sVJD4GRgGwcP00og7GKmwy');
-        //Stripe::setApiKey('pk_test_D4eqTbqTbXHUCPtqrLGdH0aa');
+        //Stripe::setApiKey('sk_test_51D3YQjCyr3LKJht0OBQHaTj1loKaHy5o8El1NK3BHTwZhffclg193oPVt0NCjcAtjfQt4l0go379sVJD4GRgGwcP00og7GKmwy');
+        Stripe::setApiKey('pk_test_D4eqTbqTbXHUCPtqrLGdH0aa');
         $endpoint_secret = "whsec_GPgvKimw0sf5DnSPxbZAP8uK9f9nzAc9";
 
         $payload = @file_get_contents('php://input');
